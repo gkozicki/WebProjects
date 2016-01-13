@@ -1,0 +1,53 @@
+@media only screen and (min-wdith:480px) {
+	#navigation .vpltabClass .vpltabItem{
+	float:left;
+	width:25%;
+	}
+	.songList{
+	float:left;
+	width:25%;
+	}
+}
+
+@media only screen and (min-width:768px) {
+	.mkPLcontainer {
+	float:left;
+	width:61%;
+	}
+}
+
+@media only screen and (min-width:1140px) {
+	/*
+	#navigation{
+	float:left;
+	width:70%;
+	}*/
+	.songsList{
+	float:left;
+	min-width:400px;
+	}
+	
+	.mlPLcontainer{
+	float:left;
+	}
+}
+.mkPLcontainer {
+	position:absolute;
+	top:50px;
+	left:5%;
+	right:5%;
+	max-height:400px;
+  border-radius: 5px;
+  background-color: grey;
+	 
+}
+
+.vpltabClass .vpltabItem .vpltabLinks{
+	width:100%;
+	display:block;
+	text-align:center;
+}
+
+#navigation{
+	top:50%;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript" src="/PandoraRemake/js/jquery.jplayer.js"></script> 
+
+</head>
+<body>
+<div id="mediaPlayer">
+    <div id="mediaContainer"></div>
+    <button id="playButton">Play</button>
+    <button id="pauseButton">Pause</button>
+    <button id="stopButton">Stop</button>
+    <button id="nextButton">Next</button>
+</div>
+<script type="text/javascript">
+function nextTrack(playerInstance, trackPlaying, playlist) {
+	
+	var nextTrack   = trackPlaying +1;
+	if(nextTrack > (playlist.length -1)) {	
+	nextTrack = 0;	
+	}	
+	playing = nextTrack;
+
+	var newTrack = playlist[nextTrack];
+	
+	playerInstance.jPlayer("setMedia", {
+	
+	
+	wav     : newTrack.wav	
+	});	
+	playerInstance.jPlayer("play");	
+	return playing;	
+	}
+
+    $(document).ready(function() {
+    	var playing = 0;
+    	var playlist = [{
+    	
+    			wav: "file:///C:/Users/Greg/music/music0001.wav"
+    			},
+    			{
+				
+				wav: "/PandoraRemake/music/music0002.wav"
+				}
+    		];
+    // Using jQuery object, rather than $
+    var mediaPlayer = jQuery('#mediaContainer');
+
+    mediaPlayer.jPlayer({
+        // Tells JPlayer where to find the SWF file.
+        swfPath: '/PandoraRemake/jPlayerDist/jplayer/jquery.jplayer.swf',
+        
+        // Fix for some older Andriod phones.
+        solution:    "flash, html",
+        
+        // Tells the player that the track is available in:
+        //         mp3, Ogg Vorbis and Wave formats.
+        supplied : 'wav',
+        
+        // Assigns the CSS selectors which will control the player,
+        //         creating buttons.
+       /*
+        cssSelector: {
+            play: '#playButton',
+            pause: '#pauseButton',
+            stop: '#stopButton',
+           
+        },
+        */
+        // Assigns the files for each format, once the player is loaded.
+        ready: function() {jQuery(this).jPlayer("setMedia", {
+            
+         //   wav: '/PandoraRemake/music/music0001.wav'
+        });}
+        
+    });
+    $('#playButton').click(function() {
+    	playing = nextTrack(mediaPlayer,playing,playlist);
+        $('#mediaContainer').jPlayer('play');
+    });
+    $('#pauseButton').click(function() {
+        $('#mediaContainer').jPlayer('pause');
+    });
+    $('#stopButton').click(function() {
+        $('#mediaContainer').jPlayer('stop');
+    });
+    $('#nextButton').click(function() {
+    	playing = nextTrack(mediaPlayer,playing,playlist);
+       // $('#mediaContainer').jPlayer('stop');
+    });
+});
+</script> 
+</body>
+</html>

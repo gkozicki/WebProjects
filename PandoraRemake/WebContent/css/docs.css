@@ -1,0 +1,551 @@
+
+html, body {
+    height: 100%;
+    position: relative;
+}
+#wrapper {
+    min-height: 100%;
+    padding-bottom: 120px;
+    position: relative;
+}
+.footer {
+    background-color: #333;
+    border-top: 20px solid white;
+    bottom: 0;
+    color: white;
+    left: 0;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+}
+.header-fixed {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+.header-branding {
+    min-height: 41px !important;
+}
+.docs-navbar-primary {
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Open Sans";
+}
+.subnav-body {
+    margin: 70px 0 20px;
+}
+.header .brand {
+    padding-bottom: 0;
+    padding-top: 6px;
+}
+.header .brand img {
+    height: 30px;
+    margin-top: 5px;
+}
+.docs-search {
+    background: none repeat scroll 0 0 white;
+    border-radius: 20px;
+    margin: 10px 0;
+    padding: 4px 0 4px 20px;
+    vertical-align: middle;
+}
+.docs-search > .search-query {
+    border: 0 none;
+    color: #555;
+    font-size: 14px;
+    width: 80%;
+}
+.docs-search > .search-icon {
+    font-size: 15px;
+    margin-right: 10px;
+}
+.docs-search > .search-query:focus {
+    outline: 0 none;
+}
+.spacer {
+    height: 1em;
+}
+.icon-cog {
+    line-height: 13px;
+}
+.naked-list, .naked-list ul, .naked-list li {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.nav-index-section a {
+    color: black !important;
+    display: block;
+    font-family: "Open Sans";
+    font-weight: bold;
+    margin-top: 10px;
+}
+.nav-index-group {
+    margin-bottom: 20px !important;
+}
+.nav-index-group-heading {
+    color: #6f0101;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 0 5px;
+    padding: 0;
+}
+.nav-index-group .nav-index-listing.current a {
+    color: #b52e31;
+}
+.nav-breadcrumb {
+    margin: 4px 0;
+    padding: 0;
+}
+.nav-breadcrumb-entry {
+    display: inline-block;
+    font-family: "Open Sans";
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+.nav-breadcrumb-entry > .divider {
+    color: #555;
+    display: inline-block;
+    padding-left: 8px;
+}
+.nav-breadcrumb-entry > span, .nav-breadcrumb-entry > a {
+    color: #6f0101;
+}
+.step-list > li:nth-child(1) {
+    padding-left: 20px;
+}
+.step-list > li:nth-child(2) {
+    padding-left: 40px;
+}
+.step-list > li:nth-child(3) {
+    padding-left: 60px;
+}
+.api-profile-header-heading {
+    margin: 0;
+    padding: 0;
+}
+.api-profile-header-structure, .api-profile-header-structure a {
+    color: #999;
+    font-family: "Open Sans";
+    font-weight: bold;
+}
+.api-profile-section {
+    border-top: 1px solid #aaa;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+pre {
+    white-space: pre-wrap;
+    word-break: normal;
+}
+.aside-nav a, .aside-nav a:link, .aside-nav a:visited, .aside-nav a:active {
+    color: #999;
+}
+.aside-nav a:hover {
+    color: black;
+}
+.api-profile-description > p:first-child {
+    font-size: 18px;
+    margin: 15px 0;
+}
+p > code, code.highlighted {
+    background: none repeat scroll 0 0 #f4f4f4;
+    border-radius: 5px;
+    color: maroon;
+    padding: 2px 5px;
+}
+ul + p {
+    margin-top: 10px;
+}
+.docs-version-jump {
+    max-width: 100%;
+    min-width: 100%;
+}
+.picker {
+    background-image: linear-gradient(#ffffff, #f2f2f2);
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    display: inline-block;
+    font-family: "Open Sans";
+    font-weight: 600;
+    height: auto;
+    margin: 0 0 2px 1.2%;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+}
+.picker select {
+    -moz-appearance: none;
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #555555;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    height: 34px;
+    min-width: 100%;
+    outline: medium none;
+    padding: 6px 30px 6px 15px;
+    position: relative;
+    text-indent: 0.01px;
+    text-overflow: "";
+    width: 120%;
+    z-index: 99;
+}
+.picker::after {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid;
+    color: #999;
+    content: "";
+    height: 0;
+    margin-top: -2px;
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    width: 0;
+    z-index: 0;
+}
+iframe.example {
+    border: 1px solid black;
+    width: 100%;
+}
+.search-results-frame {
+    clear: both;
+    display: table;
+    width: 100%;
+}
+.search-results.ng-hide {
+    display: none;
+}
+.search-results-container {
+    background: none repeat scroll 0 0 #181818;
+    border-top: 1px solid #111;
+    box-shadow: 0 0 10px #111 inset;
+    padding-bottom: 1em;
+}
+.search-results-container .search-results-group {
+    display: inline-block;
+    padding: 10px;
+    vertical-align: top;
+}
+.search-results-group-heading {
+    color: white;
+    font-family: "Open Sans";
+    padding-left: 10px;
+}
+.search-results-frame > .search-results-group:first-child > .search-results {
+    border-right: 1px solid #050505;
+}
+.search-results-group.col-group-api {
+    width: 30%;
+}
+.search-results-group.col-group-guide, .search-results-group.col-group-tutorial {
+    width: 20%;
+}
+.search-results-group.col-group-misc, .search-results-group.col-group-error {
+    float: right;
+    width: 15%;
+}
+.search-results-group.col-group-api .search-result {
+    display: inline-block;
+    width: 48%;
+}
+.search-close {
+    background: none repeat scroll 0 0 #333;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    bottom: 0;
+    box-shadow: 0 0 10px #111;
+    color: white;
+    left: 50%;
+    margin-left: -100px;
+    padding: 5px;
+    position: absolute;
+    text-align: center;
+    width: 200px;
+}
+.variables-matrix {
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    width: 100%;
+}
+.variables-matrix td, .variables-matrix th {
+    padding: 10px;
+}
+.variables-matrix td {
+    border-top: 1px solid #eee;
+}
+.variables-matrix td + td, .variables-matrix th + th {
+    border-left: 1px solid #eee;
+}
+.variables-matrix tr:nth-child(2n) td {
+    background: none repeat scroll 0 0 #f5f5f5;
+}
+.variables-matrix th {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+.sup-header {
+    background: none repeat scroll 0 0 rgba(245, 245, 245, 0.88);
+    box-shadow: 0 0 2px #999;
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+.main-body-grid {
+    margin-top: 120px;
+    position: relative;
+}
+.main-body-grid > .grid-left, .main-body-grid > .grid-right {
+    padding: 20px 0;
+}
+.main-body-grid > .grid-left {
+    bottom: 0;
+    overflow: auto;
+    position: fixed;
+    top: 120px;
+}
+.main-header-grid > .grid-left, .main-body-grid > .grid-left {
+    width: 260px;
+}
+.main-header-grid > .grid-right, .main-body-grid > .grid-right {
+    margin-left: 270px;
+    position: relative;
+}
+.main-header-grid > .grid-left {
+    float: left;
+}
+.main-body-grid .side-navigation {
+    padding-bottom: 120px;
+    position: relative;
+}
+.main-body-grid .side-navigation.ng-hide {
+    display: block !important;
+}
+.variables-matrix td {
+    padding: 5px;
+    vertical-align: top;
+}
+.type-hint {
+    background: none repeat scroll 0 0 gray;
+    display: inline-block;
+}
+.variables-matrix .type-hint {
+    margin: 1px 5px;
+    min-width: 60px;
+    text-align: center;
+}
+.type-hint + .type-hint {
+    margin-top: 5px;
+}
+.type-hint-expression {
+    background: none repeat scroll 0 0 purple;
+}
+.type-hint-date {
+    background: none repeat scroll 0 0 pink;
+}
+.type-hint-string {
+    background: none repeat scroll 0 0 #3a87ad;
+}
+.type-hint-function {
+    background: none repeat scroll 0 0 green;
+}
+.type-hint-object {
+    background: none repeat scroll 0 0 #999;
+}
+.type-hint-array {
+    background: none repeat scroll 0 0 #f90;
+}
+.type-hint-boolean {
+    background: none repeat scroll 0 0 rgb(18, 131, 39);
+}
+.type-hint-number {
+    background: none repeat scroll 0 0 rgb(189, 63, 66);
+}
+.type-hint-regexp {
+    background: none repeat scroll 0 0 rgb(90, 84, 189);
+}
+.type-hint-domelement {
+    background: none repeat scroll 0 0 rgb(95, 158, 160);
+}
+.runnable-example-frame {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 300px;
+    width: 100%;
+}
+.runnable-example-tabs {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.tutorial-nav {
+    display: block;
+}
+h1 + ul, h1 + ul > li, h2 + ul, h2 + ul > li, ul.tutorial-nav, ul.tutorial-nav > li, .usage > ul, .usage > ul > li, ul.methods, ul.methods > li, ul.events, ul.events > li {
+    list-style: outside none none;
+    padding: 0;
+}
+h2 {
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+h4 {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.btn {
+    background-image: linear-gradient(#ffffff, #f2f2f2);
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    color: #428bca;
+    display: inline-block;
+    font-family: "Open Sans";
+    font-weight: 600;
+    height: auto;
+    margin: 0 0 2px;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+}
+.btn + .btn {
+    margin-left: 10px;
+}
+.btn:hover, .btn:focus {
+    background: none repeat scroll 0 0 white !important;
+    border: 1px solid #ddd !important;
+    color: black !important;
+}
+.view-source, .improve-docs {
+    position: relative;
+    z-index: 100;
+}
+.view-source {
+    margin-right: 10px;
+}
+.improve-docs {
+    float: right;
+}
+.return-arguments, .return-arguments th, .return-arguments th + th, .return-arguments td, .return-arguments td + td {
+    border: 0 none;
+    border-radius: 0;
+}
+.return-arguments td:first-child {
+    width: 100px;
+}
+ul.methods > li, ul.events > li {
+    margin-bottom: 40px;
+}
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+.main-body-grid {
+    margin-top: 160px;
+}
+.main-body-grid > .grid-left {
+    top: 160px;
+}
+}
+@media only screen and (max-width: 768px) {
+.picker, .picker select {
+    display: block;
+    margin-bottom: 10px;
+    width: auto;
+}
+.docs-navbar-primary {
+    text-align: center;
+}
+.main-body-grid {
+    margin-top: 0;
+}
+.main-header-grid > .grid-left, .main-body-grid > .grid-left, .main-header-grid > .grid-right, .main-body-grid > .grid-right {
+    display: block;
+    float: none;
+    margin-left: 0;
+    width: auto !important;
+}
+.main-body-grid > .grid-left, .header-fixed, .footer {
+    position: static !important;
+}
+.main-body-grid > .grid-left {
+    background: none repeat scroll 0 0 #efefef;
+    margin-left: -1em;
+    margin-right: -1em;
+    overflow: visible;
+    padding: 1em;
+    width: auto !important;
+}
+.main-header-grid > .grid-right, .main-body-grid > .grid-right {
+    margin-left: 0;
+}
+.main-body-grid .side-navigation {
+    display: block !important;
+    padding-bottom: 50px;
+}
+.main-body-grid .side-navigation.ng-hide {
+    display: none !important;
+}
+.nav-index-group .nav-index-listing {
+    display: inline-block;
+    padding: 3px 0;
+}
+.nav-index-group .nav-index-listing:not(.nav-index-section)::after {
+    content: ", ";
+    margin-left: -3px;
+    padding-right: 5px;
+}
+.nav-index-group .nav-index-listing:last-child::after {
+    content: "";
+    display: inline-block;
+}
+.nav-index-group .nav-index-section {
+    display: block;
+}
+.toc-toggle {
+    margin-bottom: 20px;
+}
+.toc-close {
+    background: none repeat scroll 0 0 #eee;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    bottom: 5px;
+    box-shadow: 0 0 10px #bbb;
+    left: 50%;
+    margin-left: -50%;
+    padding: 5px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {
+    float: none;
+    text-align: center;
+}
+.search-results-container {
+    padding-bottom: 60px;
+    text-align: left;
+}
+.search-results-group {
+    border: 0 none !important;
+    display: block !important;
+    float: none !important;
+    padding: 0 !important;
+    width: auto !important;
+}
+.search-results-group .search-result {
+    display: inline-block !important;
+    padding: 0 5px;
+    width: auto !important;
+}
+.search-results-group .search-result::after {
+    content: ", ";
+}
+#wrapper {
+    padding-bottom: 0;
+}
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	    <script src="http://malsup.github.com/jquery.form.js"></script> 
+				<script type="text/javascript" src="/PandoraRemake/js/jquery.jplayer.js"></script> 
+			
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="/PandoraRemake/js/jPlayerAng.js"></script> 
+		   <link rel="stylesheet" href="/PandoraRemake/css/jPlayerAng.css" type="text/css">
+		 
+
+</head>
+<body ng-app="App">
+<div class='speaker' data-audio="audio1" data-autoplay="true" data-pauseothers="true" jplayer></div>
+ 
+<!-- Custom HTML Tags are not supported in IE6,7,8 by default, try using html5shiv.js -->
+<jplayer class='speaker' data-audio="audio2" data-autoplay="false" data-pauseothers="false"></jplayer>
+
+<div  >
+    <div id="mediaContainer"></div>
+    <button id="playButton" jplayer>Play</button>
+    <button id="pauseButton">Pause</button>
+    <button id="stopButton">Stop</button>
+    <button ng-click="next()">Next</button>
+</div>
+</body>
+</html>

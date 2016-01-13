@@ -1,0 +1,62 @@
+
+<div class="playlistsView" ng-controller="FileUploadCtrl" ng-init="tab('tab1')">
+	
+	<h1 id="plHeader"></h1>
+	<h2></h2>
+	<h3></h3>
+	<!-- 
+	<div id="navigation" >
+	<ul class="tabClass">
+		<li class="tabItem"><a class="tabLinks" href="#/upload" id="tab1" class="selected" >Upload Music</a></li>
+		<li class="tabItem"><a class="tabLinks" href="#/myPlaylists" id="tab2" >MyPlaylists</a></li>
+		<li class="tabItem"><a class="tabLinks" href="#/makePlaylist" id="tab3" >Create Playlist</a></li>
+	</ul>
+	
+	<div class="clear"></div>
+	</div>
+	-->
+	  <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+		<form id="myForm" action="/PandoraRemake/UploadDownloadFileServlet" method="post" enctype="multipart/form-data">
+          <!-- Standard Form -->
+   		 <div class="row">
+        <label for="fileToUpload">Select a File to Upload</label><br />
+        <input type="file" name="filename" multiple onchange="angular.element(this).scope().setFiles(this)" />
+   		 </div>
+    	<div id="dropbox" class="dropbox" ng-class="dropClass"><span>{{dropText}}</span></div>
+    	<div ng-show="files.length">
+        <div ng-repeat="file in files.slice(0)">
+            <span>{{file.webkitRelativePath || file.name}}</span>
+            (<span ng-switch="file.size > 1024*1024">
+                <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span>
+                <span ng-switch-default>{{file.size / 1024 | number:2}} kB</span>
+            </span>)
+        </div>
+        <input type="submit" value="Upload" />
+        </form>
+        <div ng-show="progressVisible">
+            <div class="percent">{{progress}}%</div>
+            <div class="progress-bar">
+                <div class="uploaded" ng-style="{'width': progress+'%'}"></div>
+            </div>
+        </div>
+    	</div>
+
+         
+        </div>
+      </div>
+ 
+    </div> <!-- /container -->
+    <script> 
+        // wait for the DOM to be loaded 
+        $(document).ready(function() { 
+            // bind 'myForm' and provide a simple callback function 
+            $('#myForm').ajaxForm(function() { 
+                alert("Submission Successful"); 
+            }); 
+        }); 
+    </script> 
+
+

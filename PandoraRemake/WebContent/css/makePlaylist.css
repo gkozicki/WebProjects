@@ -1,0 +1,18 @@
+.mkPLcontainer {
+	top:20%;
+	position:absolute;
+	left:25%;
+	height:400px;
+	width:600px;
+  border-radius: 5px;
+  background-color: grey;
+	 
+}
+
+.songlist {
+	height:300px;
+}
+
+.container {
+	height:375px;
+}

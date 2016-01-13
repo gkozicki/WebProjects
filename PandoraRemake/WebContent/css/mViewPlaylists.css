@@ -1,0 +1,43 @@
+@media only screen and (min-wdith:480px) {
+	#navigation .vpltabClass .vpltabItem{
+	float:left;
+	width:25%;
+	}
+}
+
+@media only screen and (min-width:768px) {
+	.viewPLcontainer {
+	float:left;
+	width:61%;
+	}
+}
+
+@media only screen and (min-width:1140px) {
+	#navigation{
+	float:left;
+	width:70%;
+	}
+}
+
+.viewPLcontainer {
+	
+	position:absolute;
+	top:50px;
+	left:5%;
+	right:5%;
+	max-height:400px;
+	/*width:600px;*/
+  border-radius: 5px;
+  background-color: grey;
+	 
+}
+
+.vpltabClass .vpltabItem .vpltabLinks{
+	width:100%;
+	display:block;
+	text-align:center;
+}
+
+#navigation{
+	top:50%;
+}

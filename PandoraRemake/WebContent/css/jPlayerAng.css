@@ -1,0 +1,9 @@
+.speaker {
+  width:48px;
+  height:48px;
+  float: left;
+  background-image: url(http://www.stillonthehill.com/images/Play-grey.png);
+}
+.speaker.pause {
+  background-image: url(http://www.iconhot.com/icon/png/addictive-flavour/48/button-red-pause.png);    
+}

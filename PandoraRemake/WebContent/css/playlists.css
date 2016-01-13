@@ -1,0 +1,108 @@
+ .plhtml{
+ /*height:100%;*/
+ top:50%;
+background-sze:cover;
+background-image: url("/PandoraRemake/images/2-fire-wallpaper.jpg");
+margin-top: 80px;
+  margin-bottom: 80px;
+  border-radius: 5px;
+ }
+ .tabClass,.tabItem,.tabLinks  {
+ margin:0; 
+ padding:0;
+ }
+ /*
+	body {
+	font-family:arial;
+	font-size:12px;
+	color:#222;
+	background:url('http://mihaifrentiu.com/wp-content/themes/mf/images/bg_tile.jpg') repeat;}
+	*/
+	
+.clear {
+	clear:both;
+	}
+	
+a img {
+	border:none;
+	}
+	
+.tabClass {
+	list-style:none;
+	position:relative; 
+	z-index:2;
+	top:1px;
+	display:table;
+	border-left:1px solid #f5ab36;
+	}
+	
+.tabClass .tabItem {
+	float:left;
+	}
+	
+.tabClass .tabItem .tabLinks {
+	background:#ffd89b;
+	color:#222;
+	display:block;
+	padding:6px 15px;
+	text-decoration:none;
+	border-right:1px solid #f5ab36;
+	border-top:1px solid #f5ab36;
+	border-right:1px solid #f5ab36;
+	}
+	
+.tabClass .tabItem a.selected  {
+	border-bottom:1px solid #fff;
+	color:#344385;
+	background:#fff;}
+	#navigation {
+	top:50%; 
+	width:602px; 
+	margin: 0 auto;
+	}
+
+#content {/*
+	width:600px; 
+	margin:0 auto;
+	height:550px;
+	background:#fff;
+	border:1px solid #f5ab36;
+	z-index:1;
+	text-align:center;
+	padding:10px 0;
+	*/}
+
+#plHeader {
+	display:block;
+	width:600px;
+	margin:0 auto;
+	padding:20px 0;
+	color:#fff;
+	}
+
+
+.playlistView{
+	position:absolute;
+	background-image: url("/PandoraRemake/images/2-fire-wallpaper.jpg");
+	height:200px;
+	width:200px;
+}
+#plBody{
+	top:50%;
+background-sze:cover;
+background-image: url("/PandoraRemake/images/2-fire-wallpaper.jpg");
+margin-top: 80px;
+  margin-bottom: 80px;
+  border-radius: 5px;
+}
+
+.tabs{
+	width:600px; 
+	margin:0 auto;
+	height:550px;
+	background:#fff;
+	border:1px solid #f5ab36;
+	z-index:1;
+	text-align:center;
+	padding:10px 0;
+}

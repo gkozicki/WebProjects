@@ -1,0 +1,10 @@
+.viewPLcontainer {
+	top:20%;
+	position:absolute;
+	left:25%;
+	height:400px;
+	width:600px;
+  border-radius: 5px;
+  background-color: grey;
+	 
+}

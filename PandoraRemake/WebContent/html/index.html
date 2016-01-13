@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html id="mainBody">
+<head>
+<meta charset="ISO-8859-1">
+<title>MusicRadio</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	    <script src="http://malsup.github.com/jquery.form.js"></script> 
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>		
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+	
+	<link rel="stylesheet" href="/PandoraRemake/css/test.css"></link>
+	<link rel="stylesheet" href="/PandoraRemake/css/login.css"></link>	
+	<link rel="stylesheet" href="/PandoraRemake/css/myMusic.css"></link>
+	<link rel="stylesheet" href="/PandoraRemake/css/makePlaylist.css"></link>
+	<link rel="stylesheet" href="/PandoraRemake/css/viewPlaylists.css"></link>
+	
+	
+	<!--<link rel="stylesheet" href="/PandoraRemake/css/playlists.css"></link>
+	
+	<link rel="stylesheet" href="/PandoraRemake/css/playlists.css"></link>-->
+	
+	<!-- <link rel="stylesheet" href="/PandoraRemake/css/bubbles.css"> -->
+	
+	<script type="text/javascript" src="/PandoraRemake/js/jquery.jplayer.js"></script> 
+	
+	<script src="/PandoraRemake/js/app.js"></script>
+	<script src="/PandoraRemake/js/playCtrl.js"></script>
+	<script src="/PandoraRemake/js/upload2.js"></script>
+	<script src="/PandoraRemake/js/autoComp.js"></script>
+	<script src="/PandoraRemake/js/songCtrl.js"></script>  
+	<script src="/PandoraRemake/js/viewPlaylistCtrl.js"></script>  
+	<script src="/PandoraRemake/js/routingConfig.js"></script> 
+		
+</head>
+  
+<header>
+<body ng-app="app" ng-controller="MainCtrl">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/">MusicRadio</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#/main">Radio <span class="sr-only">(current)</span></a></li>
+        <li><a href="#/upload">Upload Music</a></li>
+        <li><a href="#/myPlaylists">MyPlaylists</a></li>
+        <li><a href="#/makePlaylist">Create Playlist</a></li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MyAccount <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Setting</a></li>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Help</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+</header>
+
+<ng-view> </ng-view>
+</body>
+</html>

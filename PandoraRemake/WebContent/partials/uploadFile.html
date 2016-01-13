@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- release v4.1.9, copyright 2014 - 2015 Kartik Visweswaran -->
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+    <script src="http://malsup.github.com/jquery.form.js"></script> 
+ 
+    <script> 
+        // wait for the DOM to be loaded 
+        $(document).ready(function() { 
+            // bind 'myForm' and provide a simple callback function 
+            $('#myForm').ajaxForm(function() { 
+                alert("Thank you for your comment!"); 
+            }); 
+        }); 
+    </script> 
+</head>
+<body>
+<form id="myForm" action="/PandoraRemake/UploadDownloadFileServlet" method="post" enctype="multipart/form-data">
+Select File to Upload:<input type="file" name="fileName">
+<br>
+<input type="submit" value="Upload">
+</form>
+</body>
+</html>

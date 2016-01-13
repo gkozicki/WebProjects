@@ -1,0 +1,217 @@
+<div data-ng-init="init()">
+<nav class="musicNav">
+	<div id="mediaPlayer" ng-controller="playCtrl" data-ng-init="init()">
+	<div id="mediaContainer"></div>
+	<audio src="/PandoraRemake/music/music0001.wav" id="myTune"></audio>
+	<div class="buttons">
+    <button type="button" class="btn btn-default btn-lg button-skip-backward" >
+      <span class="glyphicon glyphicon-fast-backward"></span>
+    </button>
+    <button id="pauseButton" type="button" class="btn btn-default btn-lg button-pause">
+      <span class="glyphicon glyphicon-pause"></span>
+    </button>
+    <button id="stopButton" type="button" class="btn btn-default btn-lg button-stop">
+      <span class="glyphicon glyphicon-stop"></span>
+    </button>
+    <button id="playButton" type="button" class="btn btn-default btn-lg button-play"  >
+      <span class="glyphicon glyphicon-play"></span>
+    </button>
+    <button id="nextButton" type="button" class="btn btn-default btn-lg button-skip-forward" >
+      <span class="glyphicon glyphicon-fast-forward"></span>
+    </button>
+    <div id="info" >
+	<p>Now Playing: {{artist}} </p>
+</div>
+	</div>
+		<!--  <table>
+		<tr><button ng-click="like()">like</button> </tr>
+		<tr><button ng-click="dislike()">dislike</button> </tr>
+		<tr><button ng-click="play()">play</button> </tr>
+		<tr><button ng-click="next()">next</button></tr>
+		</table>
+		-->
+	</div>
+</nav>
+
+		<aside class="affix-top" ng-controller="StationCtrl" >
+		<input auto-complete ui-items="names" ng-model="newStation">
+		<button id="addStation" ng-click="addStation(newStation)" ng-disabled="addStatDisable">Add Station</button>  
+		<!--  <table border=1 frame=hsides rules=rows>
+		<col width="155">
+            <tr ng-repeat="station in stations">
+            <td ng-click="changeStation(station)">{{ station.name }}</td>
+            </tr>
+         </table>
+         -->
+         <div class="stationList">
+         <ul id="myStationList" class="ulStation" ng-repeat="station in stations">
+        <li class="liStation" >{{ station.name }}</li><br>
+    	</ul>
+    	</div>
+
+		</aside>
+<!-- 
+<section>
+<div class="slider" ng-controller="slideCtrl">
+    <div ng-repeat="slide in slides" class="slide"
+        ng-hide="!isCurrentSlideIndex($index)" data-ng-include src="getPartial(slide)">
+	<a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+    <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+	</div>
+	<nav class="nav">
+        <div class="wrapper">
+            <ul class="dots">
+                <li class="dot" ng-repeat="slide in slides">
+                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                      ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</section>
+-->
+</div>
+
+<script type="text/javascript">
+var playlist = getPlaylist();
+var playing = 0;
+$(document).on("click",".liStation",(function() {
+	//var stationName = 
+		var plName = $(this).html();
+	//alert("Station Changed to: "+plName);
+	var newPL = [];
+	newPL = getFromDB(plName);
+	//alert("new PL = "+playlist[0].wav);
+	//playlist = newPL;
+//	jQuery('#mediaContainer').jPlayer("play");
+}));
+
+function getFromDB(plName){
+	var result = [];
+	//var fromJSON = [];
+	var info = "plName="+plName;
+	//alert(info);
+	
+	$.ajax({
+		url: "/PandoraRemake/getPlaylist",
+		type:"POST",
+		data: info,
+		success:function(data){
+			fromJSON = angular.fromJson(data);
+  	      for (var i = 0; i<fromJSON.length; i++){
+  	    	  result[i] = {wav: "http://localhost:8080/PandoraRemake/"+fromJSON[i].name };
+  	    	 // alert("song = "+result[i].wav);
+  	      }  	      	
+	   //  alert("success! "+result[0].name);
+	     playlist = result;
+	    // alert("success! "+playlist[0].wav);
+	     nextTrack(jQuery('#mediaContainer'),playing,playlist);
+	     //jQuery('#mediaContainer').jPlayer("play");	
+		},
+		error: function(){}
+	});
+	
+	return result;
+}
+
+function getPlaylist(){
+
+	var temp = [];
+	temp = getFromDB("CoolRunnings");
+	return temp;
+}
+
+function newPL(newPLName, playerInstance, trackPlaying, playlist){
+
+	var temp = [];
+	temp = getFromDB(newPLName);
+	playlist = temp;
+	var newTrack = playlist[0];
+	playerInstance.jPlayer("setMedia", {	
+		wav     : newTrack	
+		});	
+		playerInstance.jPlayer("play");	
+	return temp;
+}
+
+function nextTrack(playerInstance, trackPlaying, playlist) {
+	/*
+	var name = playlist[0].wav.substring(71);
+	var subname = name.substring(0,name.length-4);
+	//alert("subname= "+subname);
+	angular.element('#mediaPlayer').scope().artist=subname;
+	angular.element('#mediaPlayer').scope().$apply(); 
+	*/
+	var nextTrak   = trackPlaying +1;
+	if(nextTrak > (playlist.length -1)) {	
+	nextTrak = 0;	
+	}	
+	playing = nextTrak;
+
+	var newTrack = playlist[nextTrak];
+	var name = playlist[nextTrak].wav.substring(71);
+	var subname = name.substring(0,name.length-4);
+	//alert("subname= "+subname);
+	angular.element('#mediaPlayer').scope().artist=subname;
+	angular.element('#mediaPlayer').scope().$apply(); 
+	
+	playerInstance.jPlayer("setMedia", {	
+	wav     : newTrack.wav	
+	});	
+	playerInstance.jPlayer("play");	
+	return playing;	
+}
+
+$(document).ready(function() {
+    	
+    		//var playing = 0;
+    		//var playlist = getPlaylist();
+    		
+    	//	function setPlaylist(newPL){
+    	//		playlist = newPL;
+    	//	}
+    // Using jQuery object, rather than $
+    var mediaPlayer = jQuery('#mediaContainer');
+
+    mediaPlayer.jPlayer({
+        // Tells JPlayer where to find the SWF file.
+        swfPath: '/PandoraRemake/jPlayerDist/jplayer/jquery.jplayer.swf',
+        
+        // Fix for some older Andriod phones.
+        solution:    "flash, html",
+        
+        // Tells the player that the track is available in:
+        //         mp3, Ogg Vorbis and Wave formats.
+        supplied : 'wav',
+        
+        // Assigns the CSS selectors which will control the player,
+        //         creating buttons.
+        cssSelector: {
+            play: '#playButton',
+            pause: '#pauseButton',
+            stop: '#stopButton'
+        },
+        
+        // Assigns the files for each format, once the player is loaded.
+        ready: function() {jQuery(this).jPlayer("setMedia", {
+            
+          //  wav: '/PandoraRemake/music/music0001.wav'
+        });}
+        
+    });
+    $('#playButton').click(function() {
+        $('#mediaContainer').jPlayer('play');
+    });
+    $('#pauseButton').click(function() {
+        $('#mediaContainer').jPlayer('pause');
+    });
+    $('#stopButton').click(function() {
+        $('#mediaContainer').jPlayer('stop');
+    });
+    $('#nextButton').click(function() {
+    	playing = nextTrack(mediaPlayer,playing,playlist);
+       // $('#mediaContainer').jPlayer('stop');
+    });
+  
+});
+</script>

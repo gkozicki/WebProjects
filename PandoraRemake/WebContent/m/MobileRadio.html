@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html id="mainBody">
+<head>
+<meta charset="ISO-8859-1">
+<title>MusicRadio</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	    <script src="http://malsup.github.com/jquery.form.js"></script> 
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>	
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.min.js"></script>
+	
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
+	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+	
+	
+	
+	<link rel="stylesheet" href="/PandoraRemake/css/test.css"></link>
+	<script src="/PandoraRemake/js/app.js"></script>
+	<script src="/PandoraRemake/js/playCtrl.js"></script>
+	<script type="text/javascript" src="/PandoraRemake/js/jquery.jplayer.js"></script> 
+		
+<script type="text/javascript">
+    function androidPlay() {
+        Android.play();
+    }
+    function androidPause() {
+        Android.pauseSong();
+    }
+    function androidPlayNext() {
+        Android.next();
+    }
+    function androidPlayPrev() {
+        Android.prev();
+    }
+    
+    function updateArtist(name){
+    	alert("in update artist");
+    	angular.element('#mediaPlayer').scope().artist=name;
+    	angular.element('#mediaPlayer').scope().$apply(); 
+    }
+    
+    function changeStations(stationName){
+    	
+    	var name = stationName.parentNode.cells[0].innerHTML;
+    	angular.element('#mediaPlayer').scope().artist=name;
+    	angular.element('#mediaPlayer').scope().$apply();
+    	Android.changeStation(name);
+    }
+   
+</script>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+<div data-ng-init="init()">
+<nav class="musicNav">
+	<div id="mediaPlayer" ng-controller="playCtrl" data-ng-init="init()">
+	<div id="mediaContainer"></div>
+	<audio src="/PandoraRemake/music/music0001.wav" id="myTune"></audio>
+	<div class="buttons">
+    <button id="backButton" onClick="androidPlayPrev()" type="button" class="btn btn-default btn-lg button-skip-backward" >
+      <span class="glyphicon glyphicon-fast-backward"></span>
+    </button>
+    <button id="pauseButton" onClick="androidPause()" type="button" class="btn btn-default btn-lg button-pause">
+      <span class="glyphicon glyphicon-pause"></span>
+    </button>
+    <button id="stopButton" onClick="androidPause()" type="button" class="btn btn-default btn-lg button-stop">
+      <span class="glyphicon glyphicon-stop"></span>
+    </button>
+    <button id="playButton" onClick="androidPlay()" type="button" class="btn btn-default btn-lg button-play"  >
+      <span class="glyphicon glyphicon-play"></span>
+    </button>
+    <button id="nextButton" onClick="androidPlayNext()" type="button" class="btn btn-default btn-lg button-skip-forward" >
+      <span class="glyphicon glyphicon-fast-forward"></span>
+    </button>
+     
+    <div id="info" >
+	<p>Now Playing: {{artist}} </p>	
+	<button id="androidCheck" onClick="showAndroidToast('this was sent from the webView')" type="button">AndroidClick</button>
+	</div>
+	</div>
+		
+	</div>
+ 
+</nav>
+
+		<aside class="affix-top" ng-controller="StationCtrl" >
+		<input auto-complete ui-items="names" ng-model="newStation">
+		<button id="addStation" ng-click="addStation(newStation)" ng-disabled="addStatDisable">Add Station</button>  
+	  <table border=1 frame=hsides rules=rows>
+		<col width="155">
+            <tr ng-repeat="station in stations">
+            <td onClick="changeStations(this)">{{ station.name }}</td>
+            </tr>
+         </table>
+         <!--  
+         <div class="stationList">
+         <ul id="myStationList" class="ulStation" ng-repeat="station in stations">
+        <li class="liStation" >{{ station.name }}</li><br>
+    	</ul>
+    	</div>
+-->
+		</aside>
+		
+ 
+</div>
+
+<script type="text/javascript">
+
+var playlist = getPlaylist();
+var playing = 0;
+$(document).on("click",".liStation",(function() {
+	//var stationName = 
+		var plName = $(this).html();
+	//alert("Station Changed to: "+plName);
+	var newPL = [];
+	newPL = getFromDB(plName);
+}));
+
+function getFromDB(plName){
+	var result = [];
+	//var fromJSON = [];
+	var info = "plName="+plName;
+	//alert(info);
+	
+	$.ajax({
+		url: "/PandoraRemake/getPlaylist",
+		type:"POST",
+		data: info,
+		success:function(data){
+			fromJSON = angular.fromJson(data);
+  	      for (var i = 0; i<fromJSON.length; i++){
+  	    	  result[i] = {wav: "http://localhost:8080/PandoraRemake/"+fromJSON[i].name };
+  	    	 // alert("song = "+result[i].wav);
+  	      }  	      	
+	   //  alert("success! "+result[0].name);
+	     playlist = result;
+	    // alert("success! "+playlist[0].wav);
+	     nextTrack(jQuery('#mediaContainer'),playing,playlist);
+	     //jQuery('#mediaContainer').jPlayer("play");	
+		},
+		error: function(){}
+	});
+	
+	return result;
+}
+
+function getPlaylist(){
+	var temp = [];
+	temp = getFromDB("CoolRunnings");
+	return temp;
+}
+
+function newPL(newPLName, playerInstance, trackPlaying, playlist){
+
+	var temp = [];
+	temp = getFromDB(newPLName);
+	playlist = temp;
+	var newTrack = playlist[0];
+	playerInstance.jPlayer("setMedia", {	
+		wav     : newTrack	
+		});	
+		playerInstance.jPlayer("play");	
+	return temp;
+}
+
+function nextTrack(playerInstance, trackPlaying, playlist) {
+
+	var nextTrak   = trackPlaying +1;
+	if(nextTrak > (playlist.length -1)) {	
+	nextTrak = 0;	
+	}	
+	playing = nextTrak;
+
+	var newTrack = playlist[nextTrak];
+	var name = playlist[nextTrak].wav.substring(71);
+	var subname = name.substring(0,name.length-4);
+	//alert("subname= "+subname);
+	angular.element('#mediaPlayer').scope().artist=subname;
+	angular.element('#mediaPlayer').scope().$apply(); 
+	
+	playerInstance.jPlayer("setMedia", {	
+	wav     : newTrack.wav	
+	});	
+	playerInstance.jPlayer("play");	
+	return playing;	
+}
+
+$(document).ready(function() {
+    	
+    var mediaPlayer = jQuery('#mediaContainer');
+
+    mediaPlayer.jPlayer({
+        swfPath: '/PandoraRemake/jPlayerDist/jplayer/jquery.jplayer.swf',      
+        solution:    "flash, html",       
+        supplied : 'wav',       
+        cssSelector: {
+            play: '#playButton',
+            pause: '#pauseButton',
+            stop: '#stopButton'
+        },       
+        // Assigns the files for each format, once the player is loaded.
+        ready: function() {jQuery(this).jPlayer("setMedia", {
+ 
+        });}        
+    });
+    $('#playButton').click(function() {
+        $('#mediaContainer').jPlayer('play');
+    });
+    $('#pauseButton').click(function() {
+        $('#mediaContainer').jPlayer('pause');
+    });
+    $('#stopButton').click(function() {
+        $('#mediaContainer').jPlayer('stop');
+    });
+    $('#nextButton').click(function() {
+    	playing = nextTrack(mediaPlayer,playing,playlist);
+       // $('#mediaContainer').jPlayer('stop');
+    });
+  
+});
+</script>
+</body>
+</html>

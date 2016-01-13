@@ -1,0 +1,40 @@
+
+<div class="playlistsView" ng-controller="playlistCtrl" ng-init="tab('tab1')">
+	
+	<h1 id="plHeader"></h1>
+	<h2></h2>
+	<h3></h3>
+	<div id="navigation" >
+	<ul class="tabClass">
+		<li class="tabItem"><a class="tabLinks" href="#/upload" id="tab1" class="selected" >Upload Music</a></li>
+		<li class="tabItem"><a class="tabLinks" href="#/myPlaylists" id="tab2" >MyPlaylists</a></li>
+		<li class="tabItem"><a class="tabLinks" href="#/makePlaylist" id="tab3" >Create Playlist</a></li>
+	</ul>
+	<div class="clear"></div>
+	</div>
+	  <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+
+          <!-- Standard Form -->
+          <h4>Select files from your computer</h4>
+          <form  enctype="multipart/form-data" id="js-upload-form">
+            <div class="form-inline">
+              <div class="form-group">
+                <input type="file" name="files[]" id="js-upload-files" multiple>
+              </div>
+              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+            </div>
+          </form>
+
+          <!-- Upload Finished -->
+          <div class="js-upload-finished">
+            <h3>Processed files</h3>
+            <div class="list-group"><!-- ng-repeat  -->
+             </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /container -->
+</div>
